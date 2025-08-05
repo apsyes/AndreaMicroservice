@@ -21,6 +21,7 @@ A list of movies if "return_data" was true, or
 A status message like {"status": "Backup complete."} if no data was requested.
 
 3C. UML Sequence Diagram
+<img width="388" height="453" alt="Screenshot 2025-08-04 191552" src="https://github.com/user-attachments/assets/21b6965b-b214-4072-bd7a-07460abb97a3" />
 
 4A. For which teammate did you implement Microservice A?
 Andrea
