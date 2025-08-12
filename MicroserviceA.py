@@ -30,15 +30,18 @@ def save_backup(data, filename):
 def microservice():
     context = zmq.Context()
     socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:5000")
+    socket.bind("tcp://*:5001")
 
-    print("Microservice A listening on port 5000...")
+    print("Microservice A listening on port 5001...")
 
     while True:
         request = socket.recv_json()
         print(f"Received request: {request}")
 
-        watchlist = load_watchlist()
+        if "watchlist_data" in request:
+            watchlist = request["watchlist_data"]
+        else:
+            watchlist = load_watchlist()
 
         # Filter watched if requested
         include_watched = request.get("include_watched", True)
@@ -59,3 +62,4 @@ def microservice():
 
 if __name__ == "__main__":
     microservice()
+
